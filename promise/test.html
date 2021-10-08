@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript" src="./index.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		const test1 = new Promise(resolve => {
+		    resolve("result1");
+		})
+		.then(result => {
+		    console.log(`收到一个结果：${result}`);
+		    return "result2";
+		})
+		.then(result => {
+		    console.log(`收到一个结果：${result}`);
+		});
+
+		const test2 = new Promise((resolve, reject) => {
+		    reject("reason");
+		})
+		.then(null, reason => {
+		    console.log(`被拒绝啦，居然是因为：${reason}`)
+		});
+
+		const test3 = new Promise((resolve, reject) => {
+		    reject("没有理由");
+		})
+		.catch(reason => {
+		    console.log(`未被捕捉的异常：${reason}`)
+		});
+
+		console.log("这里是then所在的事件队列末尾");
+	</script>
+</body>
+</html>
