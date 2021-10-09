@@ -29,7 +29,7 @@ class Promise {
         try {
             excutor(resolve, reject);
         } catch(e){
-               reject(e);
+            reject(e);
         }
     }
 
